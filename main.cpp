@@ -15,7 +15,7 @@
 using namespace std;
 using namespace __gnu_pbds;
 
-#define all(a) ((a).begin(), (a).end())
+#define all(a) (a).begin(), (a).end()
 #define in(a, b) ((a).find(b) != (a).end())
 
 using ll = long long;
@@ -220,8 +220,8 @@ template <typename T> inline string to_string_debug(const T &x) {
 /* Change to whatever the offset is to get correct line number in debug */
 inline constexpr int LINE_OFFSET = 0;
 
-namespace DebugImpl {
-template <typename... Args> void debug_impl(const char *func, const int line, const Args &...args) {
+namespace Debug {
+template <typename... Args> void debug(const char *func, const int line, const Args &...args) {
     vector<string> values{to_string_debug(args)...};
     if (values.empty())
         return;
@@ -234,6 +234,6 @@ template <typename... Args> void debug_impl(const char *func, const int line, co
     }
     cout << endl;
 }
-} // namespace DebugImpl
+} // namespace Debug
 
-#define debug(...) (DebugImpl::debug_impl(__func__, __LINE__, __VA_ARGS__))
+#define debug(...) (Debug::debug(__func__, __LINE__, __VA_ARGS__))
